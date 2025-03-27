@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: bitnami/postgresql:17.4.0
+    container_name: enquete
+    restart: always
+    environment:
+      - POSTGRESQL_USERNAME=admin
+      - POSTGRESQL_PASSWORD=admin123
+      - POSTGRESQL_DATABASE=enquete_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/bitnami/postgresql
+    networks:
+      - backend_network
+
+networks:
+  backend_network:
+
+
+volumes:
+  postgres_data:
